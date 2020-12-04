@@ -1,18 +1,6 @@
+from parser import parse
 
-with open("data.txt", "r") as f:
-    data = f.read()
-
-passports = [
-    dict([
-        key_value_pair.split(':')
-        for key_value_pair in passport.split(' ')
-        if key_value_pair
-    ])
-    for passport in [
-        string.replace('\n', ' ')
-        for string in data.split('\n\n')
-    ]
-]
+passports = parse('data.txt')
 
 required_keys = [
     'ecl',
