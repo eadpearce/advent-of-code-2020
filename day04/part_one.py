@@ -1,22 +1,13 @@
-from parser import parse
+from parser import parse_file, parse
+from constants import REQUIRED_KEYS
 
-passports = parse('data.txt')
-
-required_keys = [
-    'ecl',
-    'pid',
-    'eyr',
-    'hcl',
-    'byr',
-    'iyr',
-    'hgt',
-    # 'cid', not this one!
-]
+values = parse_file('data.txt')
+passports = parse(values)
 
 valid_passports = []
 
 for passport in passports:
-    if all([key in passport for key in required_keys]):
+    if all([key in passport for key in REQUIRED_KEYS]):
         valid_passports.append(passport)
 
 print(len(valid_passports))
