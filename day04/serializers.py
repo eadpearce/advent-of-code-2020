@@ -8,7 +8,7 @@ class PassportSerializer(serializers.Serializer):
     eyr = serializers.IntegerField(min_value=2020, max_value=2030)  # expiration year
     hgt = serializers.CharField()  # height
     ecl = serializers.CharField()  # eye colour
-    hcl = serializers.CharField(max_length=7)  # hair colour
+    hcl = serializers.CharField(min_length=7, max_length=7)  # hair colour
     pid = serializers.CharField(min_length=9, max_length=9)  # passport ID
     cid = serializers.CharField(required=False)  # country ID
 
